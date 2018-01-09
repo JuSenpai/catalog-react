@@ -1,0 +1,215 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: url('upb.jpg');
+    background-size: cover;
+}
+
+.error {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+#root {
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.app-header {
+    background: #333;
+    width: 100vw;
+    height: 10vh;
+    border-bottom: 0.1vh solid #555;
+}
+
+.header-menu {
+    position: absolute;
+    right: 0;
+}
+
+.menu-item {
+    display: block;
+    float: left;
+    color: white !important;
+    padding: 0 2vh;
+    height: 10vh;
+    line-height: 10vh;
+    text-decoration: none !important;
+    transition: color .5s;
+    font-family: "Calibri Light", serif;
+    font-size: 2vh;
+}
+
+.menu-item:hover {
+    background: #777a;
+}
+
+#logo {
+    width: 9vh;
+    height: 9vh;
+    margin-top: 0.5vh;
+    margin-left: 2.5vw;
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.logo-container h1 {
+    display: inline-block;
+    width: 10vw;
+    height: 10vh;
+    padding-top: 1.5vh;
+    color: white;
+    text-align: center;
+    font-size: 2vh;
+    font-family: "Calibri Light", serif;
+    margin-top: 1vh;
+    float: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.app-body {
+    position: absolute;
+    left: 0;
+    height: 90vh;
+    width: 100vw;
+    overflow: hidden;
+    background: #0007;
+}
+
+.form-container {
+    width: 350px;
+    margin: 5vh auto;
+    padding: 30px 20px;
+    -webkit-box-shadow: 2px 2px 10px black;
+    background: #fffd;
+    border: 1px solid #fff;
+}
+
+.form-control {
+    height: 40px;
+    font-size: 1.4vh;
+}
+
+.form-label {
+    display: block;
+    position: relative;
+}
+
+.admin-body {
+    background: #334f;
+}
+
+.side-bar {
+    position: absolute;
+    width: 10vw;
+    height: 90vh;
+    background: #223f;
+}
+
+.left {
+    left: 0;
+    border-right: 0.1vh solid #445f;
+}
+
+.right {
+    right: 0;
+    border-left: 0.1vh solid #445f;
+}
+
+.v-menu-item {
+    height: 6vh;
+    line-height: 6vh;
+    width: 10vw;
+    text-align: right;
+    font-size: 1.4vh;
+}
+
+.menu-title {
+    width: 10vw;
+    height: 8vh;
+    line-height: 8vh;
+    color: white;
+    font-size: 2vh;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+}
+
+.app-modals {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000b;
+    z-index: 10;
+}
+
+.form-modal {
+    width: 50vw;
+}
+
+.admin-view-right {
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+    left: 10vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.entity-table {
+    width: 90vw;
+}
+
+.header-row {
+    width: 90vw;
+}
+
+.header-cell {
+    color: white;
+    padding: 1vh 1vw 1vh 1vw;
+    border: 1px solid #556;
+    text-align: center;
+    background: #445;
+}
+
+.table-row {
+    color: #bbb;
+    cursor: pointer;
+}
+
+.table-row:hover {
+    background: #5563;
+}
+
+.table-cell {
+    border: 1px solid #4453;
+    text-align: center;
+    height: 40px;
+}
+
+.fc-2x {
+    width: 700px;
+}
+
+.show-pass {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+
+.block {
+    display: block;
+}
