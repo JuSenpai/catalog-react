@@ -37,12 +37,15 @@ class Registration extends AbstractPage {
         return (
             <div className={`form-container fc-2x`}>
                 <Form action={`/user/register`} afterSuccess={this.redirect} title={`Înregistrare`}>
-                    <TextField name={`username`} label={`Nume de utilizator`} icon={<Icon icon={`fa fa-user`}/>} pattern={/\w{2,}/} validators={["NotEmpty", "Regex"]} />
+                    <TextField name={`firstname`} label={`Prenume`} icon={<Icon icon={`fa fa-user`}/>} pattern={/\w{2,}/} validators={["NotEmpty", "Regex"]} />
+                    <TextField name={`lastname`} label={`Nume`} icon={<Icon icon={`fa fa-user`}/>} pattern={/\w{2,}/} validators={["NotEmpty", "Regex"]} />
+                    <TextField name={`group`} label={`Grupă`} icon={<Icon icon={`fa fa-graduation-cap`}/>} pattern={/\d{2,4}\w{1,2}/} validators={["NotEmpty", "Regex"]} />
+                    <TextField name={`cnp`} label={`CNP`} icon={<Icon icon={`fa fa-id-card-o`}/>} pattern={/\d{13}/} validators={["NotEmpty", "Regex"]} />
                     <PasswordField name={`password`} label={`Parolă`} icon={<Icon icon={`fa fa-lock`}/>} pattern={/.{8,}/} validators={["NotEmpty", "Regex"]} />
                     <TextField name={`email`} label={`Adresă de e-mail`} icon={<Icon icon={`fa fa-address-book`}/>}
                         validators={["NotEmpty", "Regex"]} pattern={/^(\w+[._]?\w+)+@(\w+\.\w+)+$/}
                     />
-                    <Submit label={`Înregistrare`} />
+                    <Submit label={`Trimite`} />
                 </Form>
             </div>
         );

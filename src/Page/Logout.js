@@ -1,16 +1,15 @@
 import React from 'react';
-import AbstractPage from "./AbstractPage";
 import {withCookies} from 'react-cookie';
-import {withRouter} from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
+import AbstractPage from "./AbstractPage";
 
 class Logout extends AbstractPage {
-    componentWillMount() {
+    componentDidMount() {
         this.logout();
     }
 
     logout() {
-        this.props.cookies.remove('_CWT');
+        this.props.cookies.remove('_CWT', { path: '/'});
         this.props.history.push('/login');
     }
 

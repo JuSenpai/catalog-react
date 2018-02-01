@@ -51,6 +51,14 @@ class Laboratory {
             </Form>
         );
     }
+
+    toString() {
+        return this.name;
+    }
+
+    isMapped(field) {
+        return field in Mapping;
+    }
 }
 
 let Mapping = {

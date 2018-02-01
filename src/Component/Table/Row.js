@@ -7,9 +7,12 @@ class Row extends React.Component {
     render() {
         let cells = [];
         for (let key in this.props.entity) {
-            cells.push(
-                <Cell key={key} className={`table-cell`} content={this.props.entity[key].toString()} ref={cell => this.cells[key] = cell} />
-            );
+            if (this.props.entity.isMapped(key)) {
+                cells.push(
+                    <Cell key={key} className={`table-cell`} content={this.props.entity[key].toString()}
+                          ref={cell => this.cells[key] = cell}/>
+                );
+            }
         }
 
         return (

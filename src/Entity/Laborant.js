@@ -46,6 +46,10 @@ class Laborant {
             </Form>
         );
     }
+
+    isMapped(field) {
+        return field in Mapping;
+    }
 }
 
 let Mapping = {

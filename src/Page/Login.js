@@ -20,7 +20,7 @@ class Login extends AbstractPage {
 
     login(response) {
         if ("webToken" in response) {
-            this.props.cookies.set("_CWT", response.webToken);
+            this.props.cookies.set("_CWT", response.webToken, { path: '/' });
             API.send({_CWT: this.props.cookies.get('_CWT')}, "/user/current", (response) => this.props.history.push({
                 pathname: '/',
                 state: {

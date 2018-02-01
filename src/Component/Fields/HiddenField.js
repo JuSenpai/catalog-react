@@ -14,8 +14,7 @@ class HiddenField extends InputField {
         return (
             <input type={`hidden`}
                    name={this.props.name}
-                   value={this.props.value}
-            />
+                   value={this.props.value} />
         );
     }
 }

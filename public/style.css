@@ -213,3 +213,7 @@ body {
 .block {
     display: block;
 }
+
+.form-control.select {
+    height: auto;
+}
