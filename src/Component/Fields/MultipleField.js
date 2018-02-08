@@ -13,7 +13,7 @@ class MultipleField extends InputField {
     }
 
     handleChange(e) {
-        let values = Array.from(e.target.children).map(option => option.selected && option.value);
+        let values = Array.from(e.target.children).filter(option => option.selected).map(option => option.value);
         this.setState({
             value: values,
         });

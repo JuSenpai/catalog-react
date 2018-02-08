@@ -25,7 +25,9 @@ class Form extends React.Component {
     handleSubmit (e) {
         e.preventDefault();
         let isFormValid = true;
-        this.fields.forEach(field => isFormValid = isFormValid & field.validate());
+        this.fields.forEach(field => {
+            isFormValid = isFormValid & field.validate()
+        });
 
         if (isFormValid) {
             let formData = {};

@@ -19,12 +19,14 @@ class Laboratory {
     id = null;
     name = null;
     year = null;
+    count = null;
     laborant = null;
 
     constructor (object) {
         this.id = object.id;
         this.name = object.name;
         this.year = object.year;
+        this.count = object.count;
         this.laborant = new LaborantEntity.class(object.laborant);
     }
 
@@ -34,6 +36,7 @@ class Laboratory {
                 <HiddenField name={`id`} value={this.id} />
                 <TextField name={`name`} label={`Nume laborator`} value={this.name} icon={<Icon icon={`fa fa-flask`}/>} validators={["NotEmpty"]} />
                 <NumberField name={`year`} label={`An de studiu`} value={this.year} icon={<Icon icon={`fa fa-graduation-cap`} min={1} validators={["MinValue"]} max={4}/>} />
+                <NumberField name={`count`} label={`Număr de laboratoare`} icon={<Icon icon={`fa fa-calendar-times`} />} validators={["MinValue"]} min={2} max={14} value={this.count} />
                 <SelectField name={`laborant`} label={`Laborant`} value={this.laborant.id} icon={<Icon icon={`fa fa-user`} />} choices={laborants} />
                 <Submit label={`Salvează`}/>
                 <DeleteField deletePath={`/laboratory/${this.id}/delete`} postDelete={remove} className={`pull-right`}/>
@@ -46,7 +49,8 @@ class Laboratory {
             <Form title={`Adaugă un laborator`} action={`/laboratory/add`} afterSuccess={success}>
                 <TextField name={`name`} label={`Nume laborator`} icon={<Icon icon={`fa fa-flask`}/>} validators={["NotEmpty"]} />
                 <NumberField name={`year`} label={`An de studiu`} icon={<Icon icon={`fa fa-graduation-cap`}/>} validators={["MinValue"]} min={1} max={4}/>
-                <SelectField name={`laborant`} label={`Laborant`} icon={<Icon icon={`fa fa-user`} />} choices={laborants} />
+                <NumberField name={`count`} label={`Număr de laboratoare`} icon={<Icon icon={`fa fa-calendar-times`} />} validators={["MinValue"]} min={2} max={14} />
+                <SelectField name={`laborant`} label={`Laborant`} icon={<Icon icon={`fa fa-user`} />} choices={laborants || []} />
                 <Submit label={`Adaugă`}/>
             </Form>
         );
@@ -65,6 +69,7 @@ let Mapping = {
     id: "ID",
     name: "Numele laboratorului",
     year: "Anul de studiu",
+    count: "Număr de laboratoare",
     laborant: "Laborant"
 };
 

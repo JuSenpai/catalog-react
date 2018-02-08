@@ -3,6 +3,7 @@ import Form from "../Component/Form";
 import TextField from "../Component/Fields/TextField";
 import Icon from "../Component/Icon";
 import Submit from "../Component/Fields/Submit";
+import PasswordField from "../Component/Fields/PasswordField";
 import HiddenField from "../Component/Fields/HiddenField";
 import DeleteField from "../Component/Fields/DeleteField";
 
@@ -41,6 +42,8 @@ class Laborant {
             <Form action={`/laborant/add`} title={`Adaugă laborant`} afterSuccess={success}>
                 <TextField name={`lastname`} label={`Nume`} icon={<Icon icon={`fa fa-user`} />} validators={["NotEmpty"]} />
                 <TextField name={`firstname`} label={`Prenume`} icon={<Icon icon={`fa fa-user`}/>} validators={["NotEmpty"]} />
+                <PasswordField name={`password`} label={`Parolă`} icon={<Icon icon={`fa fa-lock`}/>} pattern={/.{8,}/} validators={["NotEmpty", "Regex"]}/>
+                <TextField name={`email`} label={`Adresă de email`} icon={<Icon icon={`fa fa-envelope-o`}/>} pattern={/^(\w+[._]?\w+)+@(\w+\.\w+)+$/} validators={["NotEmpty", "Regex"]} />
                 <TextField name={`cnp`} label={`CNP (Cod Numeric Personal)`} icon={<Icon icon={`fa fa-address-card`}/>} pattern={/\d{13}/} validators={["NotEmpty", "Regex"]} />
                 <Submit label={`Adaugă`} />
             </Form>

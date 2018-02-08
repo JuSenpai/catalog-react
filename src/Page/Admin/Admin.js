@@ -19,24 +19,23 @@ class Admin extends AbstractPage {
 
         this.state.showModal = false;
         this.state.form = null;
+        this.state.entities = [];
         this.hideModal = this.hideModal.bind(this);
         this.showModal = this.showModal.bind(this);
         this.entityAdded = this.entityAdded.bind(this);
         this.entityEdited = this.entityEdited.bind(this);
         this.entityDeleted = this.entityDeleted.bind(this);
+        this.state.loading = true;
     }
 
     componentDidMount () {
-        this.isUserLoggedIn(function () {
-            this.getCurrentUser();
-            API.fetch(this.props.entity.route, function (data) {
-                let entities = data.map(object => new this.props.entity.class(object));
-                this.setState({
-                    entities: entities
-                });
-            }.bind(this));
-        }.bind(this), function () {
-            this.props.history.push("/login");
+        super.componentDidMount();
+        API.fetch(this.props.entity.route, function (data) {
+            let entities = data.map(object => new this.props.entity.class(object));
+            this.setState({
+                entities: entities,
+                loading: false,
+            });
         }.bind(this));
     }
 
@@ -64,7 +63,7 @@ class Admin extends AbstractPage {
                 <MenuItem url={`/`} label={`Acasă`} icon={`fa fa-home`} references={{user: this.state.user}}/>
                 <MenuItem url={`/logout`}
                           label={this.state.user.username ? `Delogare (` + this.state.user.username + `)` : `Delogare`}
-                          icon={`fa fa-sign-out`}/>
+                          icon={`fa fa-sign-out-alt`}/>
             </Menu>
         );
     }
@@ -122,9 +121,14 @@ class Admin extends AbstractPage {
         );
     }
 
+    loadingCondition() {
+        return this.state.loading;
+    }
+
     render () {
         return (
             <Root>
+                { this.loadingCondition() && <div className={`loading`}><h1><i className="fa fa-spinner rotating"/>&nbsp;&nbsp;&nbsp;Încărcare...</h1></div> }
                 <Modal visible={this.state.showModal} onClick={this.hideModal}>
                     <div className={`form-container form-modal`}>
                         {this.state.form}

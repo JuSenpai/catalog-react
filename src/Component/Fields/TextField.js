@@ -17,7 +17,7 @@ class TextField extends InputField {
                        value={this.state.value}
                        name={this.props.name}
                        id={this.props.id}
-                       onChange={this.handleChange}
+                       onChange={this.handleChange} autoComplete="new-password"
                 />
                 <h6 className={`label text-danger error`}><small>{this.state.error}</small></h6>
             </label>

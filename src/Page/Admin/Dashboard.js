@@ -10,21 +10,13 @@ import Body from "../../Component/Body";
 import Sidebar from "../../Component/Sidebar";
 
 class Dashboard extends AbstractPage {
-    componentDidMount () {
-        this.isUserLoggedIn(function () {
-            this.getCurrentUser();
-        }.bind(this), function () {
-            this.props.history.push("/login");
-        }.bind(this));
-    }
-
     header () {
         return (
             <Menu className={`header-menu`}>
                 <MenuItem url={`/`} label={`Acasă`} icon={`fa fa-home`} references={{user: this.state.user}}/>
                 <MenuItem url={`/logout`}
                           label={this.state.user.username ? `Delogare (` + this.state.user.username + `)` : `Delogare`}
-                          icon={`fa fa-sign-out`}/>
+                          icon={`fa fa-sign-out-alt`}/>
             </Menu>
         );
     }
@@ -32,10 +24,12 @@ class Dashboard extends AbstractPage {
     sidebar () {
         return (
             <Menu title={`Dashboard`}>
+                <MenuItem url={"/admin/users"} label={`Administrare Utilizatori`} className={`menu-item v-menu-item`}
+                          icon={`fa fa-users`} references={{user: this.state.user}}/>
                 <MenuItem url={"/admin/students"} label={`Administrare Studenţi`} className={`menu-item v-menu-item`}
                           icon={`fa fa-graduation-cap`} references={{user: this.state.user}}/>
                 <MenuItem url={"/admin/laborants"} label={`Administrare Laboranţi`} className={`menu-item v-menu-item`}
-                          icon={`fa fa-group`} references={{user: this.state.user}}/>
+                          icon={`fa fa-users`} references={{user: this.state.user}}/>
                 <MenuItem url={"/admin/laboratories"} label={`Administrare Laboratoare`} className={`menu-item v-menu-item`}
                           icon={`fa fa-flask`} references={{user: this.state.user}}/>
             </Menu>
@@ -45,6 +39,7 @@ class Dashboard extends AbstractPage {
     render () {
         return (
             <Root>
+                { this.loadingCondition() && <div className={`loading`}><h1><i className="fa fa-spinner rotating"/>&nbsp;&nbsp;&nbsp;Încărcare...</h1></div> }
                 <Header>
                     {this.header()}
                 </Header>

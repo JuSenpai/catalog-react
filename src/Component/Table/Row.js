@@ -4,7 +4,7 @@ import Cell from "./Cell";
 class Row extends React.Component {
     cells = {};
 
-    render() {
+    render = () => {
         let cells = [];
         for (let key in this.props.entity) {
             if (this.props.entity.isMapped(key)) {

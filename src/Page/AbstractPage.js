@@ -66,9 +66,14 @@ class AbstractPage extends React.Component {
         return null;
     }
 
+    loadingCondition() {
+        return this.state.user.username === '';
+    }
+
     render () {
         return (
             <Root>
+                { this.loadingCondition() && <div className={`loading`}><h1><i className="fa fa-spinner rotating"/>&nbsp;&nbsp;&nbsp;Încărcare...</h1></div> }
                 <Header>
                     {this.header()}
                 </Header>

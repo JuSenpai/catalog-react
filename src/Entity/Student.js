@@ -4,10 +4,12 @@ import Submit from "../Component/Fields/Submit";
 import TextField from "../Component/Fields/TextField";
 import DeleteField from "../Component/Fields/DeleteField";
 import HiddenField from "../Component/Fields/HiddenField";
+import PasswordField from "../Component/Fields/PasswordField";
 import MultipleField from "../Component/Fields/MultipleField";
 import Icon from "../Component/Icon";
 import API from "../API";
 import LaboratoryEntity from "./Laboratory";
+import UserEntity from "./User";
 
 let laboratories = [];
 API.fetch("/laboratory", function (response) {
@@ -20,6 +22,7 @@ class Student {
     lastname = null;
     CNP = null;
     group = null;
+    user = null;
     laboratories = null;
 
     constructor (object) {
@@ -29,6 +32,7 @@ class Student {
         this.CNP = object.CNP;
         this.group = object.group;
         this.laboratories = object.laboratories || [];
+        this.user = new UserEntity.class(object.user || {});
     }
 
     getForm(success, remove) {
@@ -51,6 +55,8 @@ class Student {
             <Form action={`/student/add`} afterSuccess={success} title={`Adaugă un student`}>
                 <TextField name={`lastname`} label={`Nume`} icon={<Icon icon={`fa fa-user`} />} />
                 <TextField name={`firstname`} label={`Prenume`} icon={<Icon icon={`fa fa-user`} />} />
+                <PasswordField name={`password`} label={`Parolă`} icon={<Icon icon={`fa fa-lock`}/>} />
+                <TextField name={`email`} pattern={/^(\w+[._]?\w+)+@(\w+\.\w+)+$/} label={`Adresă de email`} icon={<Icon icon={`fa fa-envelope-o`}/>} validators={["NotEmpty", "Regex"]} />
                 <TextField name={`cnp`} label={`CNP (Cod numeric personal)`} icon={<Icon icon={`fa fa-address-card`}/>} />
                 <TextField name={`group`} label={`Grupă`}  icon={<Icon icon={`fa fa-users`}/>}/>
                 <MultipleField name={`laboratories`} id={`laboratories`} options={laboratories} label={`Laboratoare`} icon={<Icon icon={`fa fa-flask`} />} />
@@ -73,7 +79,8 @@ const Mapping = {
     firstname: "Prenume",
     lastname: "Nume",
     CNP: "CNP",
-    group: "Grupă"
+    group: "Grupă",
+    user: "Nume de utilizator"
 };
 
 const StudentEntity = {

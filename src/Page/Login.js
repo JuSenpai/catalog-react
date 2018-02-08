@@ -18,6 +18,10 @@ class Login extends AbstractPage {
         this.isUserLoggedIn(() => this.props.history.push('/'), null);
     }
 
+    loadingCondition() {
+        return false;
+    }
+
     login(response) {
         if ("webToken" in response) {
             this.props.cookies.set("_CWT", response.webToken, { path: '/' });
@@ -33,7 +37,7 @@ class Login extends AbstractPage {
     header() {
         return (
             <Menu className={`header-menu`}>
-                <MenuItem url={`/register`} label={`Înregistrare`} icon={`fa fa-sign-in`}/>
+                <MenuItem url={`/register`} label={`Înregistrare`} icon={`fa fa-sign-in-alt`}/>
             </Menu>
         );
     }

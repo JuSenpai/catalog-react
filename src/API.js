@@ -7,12 +7,17 @@ class Connection {
     }
 
     fetch(path, callback) {
-        path.endsWith("/");
-        if (!path.endsWith("/")) {
-            path += "/";
-        }
+        !(path.endsWith("/")) && (path += "/");
 
-        jQuery.getJSON(this.base + path, callback);
+        if (callback !== undefined) {
+            fetch(this.base + path)
+                .then(response => response.json())
+                .then(data => callback(data));
+        } else return new Promise((resolve, reject) => {
+            fetch(this.base + path)
+                .then(response => response.json())
+                .then(data => resolve(data));
+        });
     }
 
     send(data, path, callback) {
@@ -25,6 +30,6 @@ class Connection {
     }
 }
 
-let API = new Connection("http://api.catalog.com");
+let API = new Connection("http://react.ilink.ro");
 
 export default API;
